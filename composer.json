@@ -1,0 +1,27 @@
+{
+    "name": "luxplus/mobilepay",
+    "description": "Luxplus implementation of MobilePay API Subscription 1.1.1",
+    "type": "library",
+    "require": {
+        "nesbot/carbon": "^1.22",
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "nesbot/carbon": "^1.22",
+        "symfony/var-dumper": "^3.1",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Nikolaj Gammelmark",
+            "email": "nikolaj.gammelmark@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Luxplus\\MobilePay\\": "src/MobilePay"
+        }
+    },
+    "minimum-stability": "stable"
+}
