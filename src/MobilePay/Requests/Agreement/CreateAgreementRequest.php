@@ -97,6 +97,23 @@ class CreateAgreementRequest extends Request {
         return $instance;
     }
 
+
+    /**
+     *
+     * Use createInstance if you need additional parameters.
+     *
+     * @param float $amount
+     * @param string $plan
+     * @param string $description
+     * @param Carbon $nextPaymentDate
+     * @param string $externalId
+     * @param string $mobilePhoneNumber
+     * @param string $linkUserRedirect
+     * @param string $linkSuccessCallback
+     * @param string $linkCancelCallback
+     * @param CreateOneOffPaymentRequest|null $createOneOffPaymentRequest
+     * @return CreateAgreementRequest
+     */
     public static function createSimpleInstance(
         float $amount,
         string $plan,

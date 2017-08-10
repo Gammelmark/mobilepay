@@ -19,6 +19,7 @@ use Luxplus\MobilePay\Requests\Authentication\OAuth2AuthenticationRequest;
 use Luxplus\MobilePay\Requests\Merchant\UpdateMerchantRequest;
 use Luxplus\MobilePay\Requests\OneOffPayment\CreateOneOffPaymentRequest;
 use Luxplus\MobilePay\Requests\Payment\CreatePaymentRequest;
+use Luxplus\MobilePay\Requests\Refund\CreateRefundRequest;
 
 
 class MobilePaySubscriptionClient {
@@ -220,5 +221,28 @@ class MobilePaySubscriptionClient {
         return $this->mobilePayConnectionManager->put('/recurringpayments-restapi/api/merchants/me/auth/basic', $basicAuthenticationRequest);
     }
 
+
+    /**
+     * New calls, added in MobilePay Subscription 1.2.6
+     */
+
+    /**
+     * @param string $agreementRequestId
+     * @param string $paymentRequestId
+     * @return mixed
+     */
+    public function getRefunds(string $agreementRequestId, string $paymentRequestId) {
+        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds');
+    }
+
+    /**
+     * @param string $agreementRequestId
+     * @param string $paymentRequestId
+     * @param CreateRefundRequest $createRefundRequest
+     * @return mixed
+     */
+    public function postRefunds(string $agreementRequestId, string $paymentRequestId, CreateRefundRequest $createRefundRequest) {
+        return $this->mobilePayConnectionManager->post('/recurringpayments-restapi/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds', $createRefundRequest);
+    }
 
 }
