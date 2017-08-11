@@ -232,7 +232,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getRefunds(string $agreementRequestId, string $paymentRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds');
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds');
     }
 
     /**
@@ -242,7 +242,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function postRefunds(string $agreementRequestId, string $paymentRequestId, CreateRefundRequest $createRefundRequest) {
-        return $this->mobilePayConnectionManager->post('/recurringpayments-restapi/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds', $createRefundRequest);
+        return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds', $createRefundRequest);
     }
 
 }
