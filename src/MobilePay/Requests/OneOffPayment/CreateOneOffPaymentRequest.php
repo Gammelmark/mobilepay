@@ -16,26 +16,33 @@ class CreateOneOffPaymentRequest extends Request {
     private $amount;
     private $external_id;
     private $description;
+    private $links;
 
     private function __construct() {
     }
 
-    public static function createInstance($amount, string $external_id, string $description) {
+    public static function createInstance($amount, string $external_id, string $description, string $link_rel, string $link_href) {
 
         $instance = new self();
         $instance->amount = $amount;
         $instance->external_id = $external_id;
         $instance->description = $description;
+        $instance->links = [[
+            "rel" => $link_rel,
+            "href" => $link_href
+            ]
+        ];
         return $instance;
     }
 
     public function toJSON() {
         return json_encode(
-          [
-              "amount"=>$this->amount,
-              "external_id" => $this->external_id,
-              "description" => $this->description
-          ]
+            [
+                "amount" => $this->amount,
+                "external_id" => $this->external_id,
+                "description" => $this->description,
+                "links" => $this->links
+            ]
         );
     }
 
