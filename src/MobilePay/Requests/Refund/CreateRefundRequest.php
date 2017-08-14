@@ -28,10 +28,10 @@ class CreateRefundRequest extends Request {
 
     public function toJSON() {
 
-        return json_encode([[
+        return json_encode([
                 "amount" => $this->amount,
                 "status_callback_url" => $this->statusCallbackUrl
-            ]]
+            ]
         );
     }
 
