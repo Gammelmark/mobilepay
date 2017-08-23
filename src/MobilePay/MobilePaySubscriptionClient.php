@@ -55,7 +55,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getAgreementRequests() {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements');
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements');
     }
 
     /**
@@ -63,7 +63,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getAgreementRequest(string $agreementRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId);
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId);
     }
 
     /**
@@ -71,7 +71,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function postAgreementRequest(CreateAgreementRequest $agreementRequest) {
-        return $this->mobilePayConnectionManager->post("/recurringpayments-restapi/api/merchants/me/agreements", $agreementRequest);
+        return $this->mobilePayConnectionManager->post("/subscriptions/api/merchants/me/agreements", $agreementRequest);
     }
 
     /**
@@ -79,7 +79,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function deleteAgreementRequest(string $agreementRequestId) {
-        return $this->mobilePayConnectionManager->delete('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId);
+        return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId);
     }
 
     /**
@@ -88,7 +88,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function patchAgreementRequest(string $agreementRequestId, UpdateAgreementRequest $agreementRequest) {
-        return $this->mobilePayConnectionManager->patch("/recurringpayments-restapi/api/merchants/me/agreements/" . $agreementRequestId, $agreementRequest);
+        return $this->mobilePayConnectionManager->patch("/subscriptions/api/merchants/me/agreements/" . $agreementRequestId, $agreementRequest);
     }
 
 
@@ -97,7 +97,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getPaymentRequests(string $agreementRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests');
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests');
     }
 
     /**
@@ -106,7 +106,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getPaymentRequest(string $agreementRequestId, string $paymentRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId);
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId);
     }
 
     /**
@@ -114,7 +114,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function postPaymentRequests(CreatePaymentRequest $paymentRequest) {
-        return $this->mobilePayConnectionManager->post('/recurringpayments-restapi/api/merchants/me/paymentrequests', $paymentRequest);
+        return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/paymentrequests', $paymentRequest);
     }
 
     /**
@@ -123,7 +123,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function deletePaymentRequest(string $agreementRequestId, string $paymentRequestId) {
-        return $this->mobilePayConnectionManager->delete('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId);
+        return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId);
     }
 
     /**
@@ -133,7 +133,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function patchPaymentRequest(string $agreementRequestId, string $paymentRequestId, CreatePaymentRequest $paymentRequest) {
-        return $this->mobilePayConnectionManager->patch('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId, $paymentRequest);
+        return $this->mobilePayConnectionManager->patch('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId, $paymentRequest);
     }
 
 
@@ -142,7 +142,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getOneOffPayments(string $agreementRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments');
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments');
     }
 
     /**
@@ -151,7 +151,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getOneOffPayment(string $agreementRequestId, string $oneOffPaymentRequestId) {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId);
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId);
     }
 
     /**
@@ -160,7 +160,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function postOneOffPayment(string $agreementRequestId, CreateOneOffPaymentRequest $oneOffPaymentRequest) {
-        return $this->mobilePayConnectionManager->post('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments', $oneOffPaymentRequest);
+        return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments', $oneOffPaymentRequest);
     }
 
     /**
@@ -169,7 +169,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function deleteOneOffPayment(string $agreementRequestId, string $oneOffPaymentRequestId) {
-        return $this->mobilePayConnectionManager->delete('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId);
+        return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId);
     }
 
     /**
@@ -178,7 +178,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function captureOneOffPayment(string $agreementRequestId, string $paymentRequestId) {
-        return $this->mobilePayConnectionManager->post('/recurringpayments-restapi/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $paymentRequestId . '/capture');
+        return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $paymentRequestId . '/capture');
     }
 
 
@@ -186,7 +186,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function getMerchantConfiguration() {
-        return $this->mobilePayConnectionManager->get('/recurringpayments-restapi/api/merchants/me');
+        return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me');
     }
 
     /**
@@ -194,7 +194,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function patchMerchantConfiguration(UpdateMerchantRequest $updateMerchantRequest) {
-        return $this->mobilePayConnectionManager->patch('/recurringpayments-restapi/api/merchants/me', $updateMerchantRequest);
+        return $this->mobilePayConnectionManager->patch('/subscriptions/api/merchants/me', $updateMerchantRequest);
     }
 
     /**
@@ -202,7 +202,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function putAPIKeyAuthentication(ApiKeyAuthenticationRequest $apiKeyAuthenticationRequest) {
-        return $this->mobilePayConnectionManager->put('/recurringpayments-restapi/api/merchants/me/auth/apikey', $apiKeyAuthenticationRequest);
+        return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/apikey', $apiKeyAuthenticationRequest);
     }
 
     /**
@@ -210,7 +210,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function putOAuth2Authentication(OAuth2AuthenticationRequest $oAuth2AuthenticationRequest) {
-        return $this->mobilePayConnectionManager->put('/recurringpayments-restapi/api/merchants/me/auth/oauth2', $oAuth2AuthenticationRequest);
+        return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/oauth2', $oAuth2AuthenticationRequest);
     }
 
     /**
@@ -218,7 +218,7 @@ class MobilePaySubscriptionClient {
      * @return mixed
      */
     public function putBasicAuthentication(BasicAuthenticationRequest $basicAuthenticationRequest) {
-        return $this->mobilePayConnectionManager->put('/recurringpayments-restapi/api/merchants/me/auth/basic', $basicAuthenticationRequest);
+        return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/basic', $basicAuthenticationRequest);
     }
 
 
