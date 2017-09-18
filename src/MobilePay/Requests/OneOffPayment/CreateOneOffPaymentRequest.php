@@ -8,7 +8,6 @@
 
 namespace Luxplus\MobilePay\Requests\OneOffPayment;
 
-use Carbon\Carbon;
 use Luxplus\MobilePay\Requests\Request;
 
 class CreateOneOffPaymentRequest extends Request {
@@ -35,15 +34,14 @@ class CreateOneOffPaymentRequest extends Request {
         return $instance;
     }
 
-    public function toJSON() {
-        return json_encode(
+    public function jsonSerialize() {
+        return
             [
                 "amount" => $this->amount,
                 "external_id" => $this->external_id,
                 "description" => $this->description,
                 "links" => $this->links
-            ]
-        );
+            ];
     }
 
 

@@ -7,11 +7,10 @@
  */
 
 namespace Luxplus\MobilePay\Requests;
-abstract class Request {
-    public abstract function toJSON();
+abstract class Request implements \JsonSerializable {
 
     public function __toString() {
-        return $this->toJSON();
+        return $this->jsonSerialize();
     }
 
     public function toArray() {
@@ -23,8 +22,6 @@ abstract class Request {
             $resultArray[$var->getName()] = $var->getValue($this);
             $var->setAccessible(false);
         }
-
         return $resultArray;
-
     }
 }

@@ -24,10 +24,8 @@ class ApiKeyAuthenticationRequest extends Request {
 
     }
 
-    public function toJSON() {
-        return json_encode(
-            ["api_key"=>$this->api_key]
-        );
+    public function jsonSerialize() {
+        return ["api_key"=>$this->api_key];
     }
 
 }

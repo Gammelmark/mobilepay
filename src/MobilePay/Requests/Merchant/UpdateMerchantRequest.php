@@ -29,10 +29,10 @@ class UpdateMerchantRequest extends Request {
 
         //only these properties are allowed
         if(!in_array($path, $this->allowedPaths))
-            throw new \Exception("Available properties: ".implode(",",$this->allowedPaths).". Property supplied: '".$path."''.");
+            throw new \InvalidArgumentException("Available properties: ".implode(",",$this->allowedPaths).". Property supplied: '".$path."''.");
         //only op(eration) allowed for now are: replace
         if(!in_array($op, $this->allowedOperations))
-            throw new \Exception("Available properties: replace. Property supplied: '".$op."''.");
+            throw new \InvalidArgumentException("Available properties: replace. Property supplied: '".$op."''.");
 
         $item["value"] = $value;
         $item["path"] = $path;
@@ -44,8 +44,10 @@ class UpdateMerchantRequest extends Request {
         $this->items[] = $item;
     }
 
-    public function toJSON() {
-        return json_encode($this->items);
+    public function jsonSerialize() {
+        if($this->items == null)
+            throw new \InvalidArgumentException('Items array is empty. Please use addItem() to add new items.');
+        return $this->items;
     }
 
 

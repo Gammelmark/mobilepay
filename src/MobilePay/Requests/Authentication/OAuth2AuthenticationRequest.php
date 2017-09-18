@@ -30,15 +30,14 @@ class OAuth2AuthenticationRequest extends Request {
         return $instance;
     }
 
-    public function toJSON() {
-        return json_encode(
+    public function jsonSerialize() {
+        return
             [
                 "client_id" => $this->client_id,
                 "client_secret" => $this->client_secret,
                 "token_url" => $this->token_url,
                 "scope" => $this->scope
-            ]
-        );
+            ];
 
     }
 }

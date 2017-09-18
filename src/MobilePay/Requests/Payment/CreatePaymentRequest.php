@@ -15,7 +15,13 @@ class CreatePaymentRequest extends Request {
 
     private $agreement_id;
     private $amount;
+    /**
+     * @var Carbon $due_date
+     */
     private $due_date;
+    /**
+     * @var Carbon $next_payment_date
+     */
     private $next_payment_date;
     private $external_id;
     private $description;
@@ -35,17 +41,15 @@ class CreatePaymentRequest extends Request {
         return $instance;
     }
 
-    public function toJSON() {
-
-        return json_encode([[
-                "agreement_id" => $this->agreement_id,
-                "amount" => $this->amount,
-                "due_date" => $this->due_date->toDateString(),
-                "next_payment_date" => $this->next_payment_date->toDateString(),
-                "external_id" => $this->external_id,
-                "description" => $this->description
-            ]]
-        );
+    public function jsonSerialize() {
+        return [
+            "agreement_id" => $this->agreement_id,
+            "amount" => $this->amount,
+            "due_date" => $this->due_date->toDateString(),
+            "next_payment_date" => $this->next_payment_date->toDateString(),
+            "external_id" => $this->external_id,
+            "description" => $this->description
+        ];
     }
 
 

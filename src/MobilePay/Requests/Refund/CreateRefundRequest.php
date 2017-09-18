@@ -26,13 +26,9 @@ class CreateRefundRequest extends Request {
         return $instance;
     }
 
-    public function toJSON() {
+    public function jsonSerialize() {
 
-        return json_encode([
-                "amount" => $this->amount,
-                "status_callback_url" => $this->statusCallbackUrl
-            ]
-        );
+        return ["amount" => $this->amount, "status_callback_url" => $this->statusCallbackUrl];
     }
 
 

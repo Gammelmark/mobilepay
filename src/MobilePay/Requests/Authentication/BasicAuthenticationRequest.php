@@ -27,13 +27,12 @@ class BasicAuthenticationRequest extends Request {
 
     }
 
-    public function toJSON() {
-        return json_encode(
+    public function jsonSerialize() {
+        return
             [
                 "user_name" => $this->user_name,
                 "password"=>$this->password,
-            ]
-        );
+            ];
     }
 
 }

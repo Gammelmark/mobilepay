@@ -143,7 +143,7 @@ class CreateAgreementRequest extends Request {
             $createOneOffPaymentRequest);
     }
 
-    public function toJSON() {
+    public function jsonSerialize() {
 
         $links = [
             ["rel" => "user-redirect", "href" => $this->link_user_redirect],
@@ -168,6 +168,6 @@ class CreateAgreementRequest extends Request {
         if($this->one_off_payment_request != null)
             $tmpArray["one_off_payment"] = $this->one_off_payment_request->toArray();
 
-        return json_encode($tmpArray);
+        return $tmpArray;
     }
 }
