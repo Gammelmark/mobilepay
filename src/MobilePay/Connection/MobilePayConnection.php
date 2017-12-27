@@ -81,7 +81,7 @@ class MobilePayConnection {
      * @throws PreconditionFailedException
      * @throws \HttpResponseException
      */
-    public function post(string $uri,  Request $request = null, string $correlationId = null) {
+    public function post(string $uri, $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'POST', $correlationId);
     }
 

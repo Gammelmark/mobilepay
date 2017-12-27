@@ -33,4 +33,5 @@
     - Added possibility to supply correlation id with a call.
     - Added a createGUID() method in MobilePaySubscriptionClient to use for the correlation id.
     
-        
+- **27th December:**
+    - Fixed bug in MobilePayConnection post()-method introduced in the update from the 18th September. Introduced by postPaymentRequestsBatch.
