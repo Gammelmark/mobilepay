@@ -70,7 +70,7 @@ class MobilePayConnection {
 
     /**
      * @param string $uri
-     * @param Request|null $request
+     * @param Request|array|null $request
      * @param string|null $correlationId
      * @return mixed
      * @throws BadRequestException

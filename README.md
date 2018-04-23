@@ -35,3 +35,7 @@
     
 - **27th December:**
     - Fixed bug in MobilePayConnection post()-method introduced in the update from the 18th September. Introduced by postPaymentRequestsBatch.
+    
+    
+- **23rd April 2018**    
+    - Fixed issue in ErrorResponse and added a getFullResponse() method for logging purposes. 

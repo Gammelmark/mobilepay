@@ -13,6 +13,7 @@ class ErrorResponse {
     private $message;
     private $error_type;
     private $correlation_id;
+    private $fullResponse;
 
     private function __construct() {
     }
@@ -25,10 +26,11 @@ class ErrorResponse {
     public static function createInstance(\stdClass $stdClass = null) {
         $instance = new self();
         if($stdClass != null) {
-            $instance->error = $stdClass->error;
-            $instance->message = $stdClass->error_description->message;
-            $instance->error_type = $stdClass->error_description->error_type;
-            $instance->correlation_id = $stdClass->error_description->correlation_id;
+            $instance->error = isset($stdClass->error)?$stdClass->error:null;
+            $instance->message = isset($stdClass->error_description->message)?$stdClass->error_description->message:null;
+            $instance->error_type = isset($stdClass->error_description->error_type)?$stdClass->error_description->error_type:null;
+            $instance->correlation_id = isset($stdClass->error_description->correlation_id)?$stdClass->error_description->correlation_id:null;
+            $instance->fullResponse = $stdClass;
         }
         return $instance;
     }
@@ -65,5 +67,7 @@ class ErrorResponse {
         return $this->correlation_id?:"No Correlation Id.";
     }
 
-
+    public function getFullResponse() {
+        return $this->fullResponse;
+    }
 }
