@@ -13,6 +13,7 @@ use Luxplus\MobilePay\Connection\MobilePayConnectionConfiguration;
 use Luxplus\MobilePay\Connection\MobilePayConnectionManager;
 use Luxplus\MobilePay\Exceptions\BadRequestException;
 use Luxplus\MobilePay\Exceptions\CurlException;
+use Luxplus\MobilePay\Exceptions\HttpResponseException;
 use Luxplus\MobilePay\Exceptions\IdNotProvidedException;
 use Luxplus\MobilePay\Exceptions\InternalServerErrorException;
 use Luxplus\MobilePay\Exceptions\NotFoundException;
@@ -66,7 +67,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getAgreementRequests(string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements', $correlationId);
@@ -82,7 +83,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getAgreementRequest(string $agreementRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId, $correlationId);
@@ -98,7 +99,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function postAgreementRequest(CreateAgreementRequest $agreementRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->post("/subscriptions/api/merchants/me/agreements", $agreementRequest, $correlationId);
@@ -114,7 +115,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function deleteAgreementRequest(string $agreementRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId, $correlationId);
@@ -131,7 +132,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function patchAgreementRequest(string $agreementRequestId, UpdateAgreementRequest $agreementRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->patch("/subscriptions/api/merchants/me/agreements/" . $agreementRequestId, $agreementRequest, $correlationId);
@@ -148,7 +149,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getPaymentRequests(string $agreementRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests', $correlationId);
@@ -165,7 +166,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getPaymentRequest(string $agreementRequestId, string $paymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId, $correlationId);
@@ -183,7 +184,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function postPaymentRequests($paymentRequest, string $correlationId = null) {
         if(is_array($paymentRequest)) {
@@ -209,7 +210,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function postPaymentRequestsBatch(array $paymentRequestArray, string $correlationId = null) {
         foreach($paymentRequestArray as $paymentRequest) {
@@ -232,7 +233,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function deletePaymentRequest(string $agreementRequestId, string $paymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId, $correlationId);
@@ -250,7 +251,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function patchPaymentRequest(string $agreementRequestId, string $paymentRequestId, CreatePaymentRequest $paymentRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->patch('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/paymentrequests/' . $paymentRequestId, $paymentRequest, $correlationId);
@@ -267,7 +268,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getOneOffPayments(string $agreementRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments', $correlationId);
@@ -284,7 +285,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getOneOffPayment(string $agreementRequestId, string $oneOffPaymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId, $correlationId);
@@ -301,7 +302,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function postOneOffPayment(string $agreementRequestId, CreateOneOffPaymentRequest $oneOffPaymentRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments', $oneOffPaymentRequest, $correlationId);
@@ -318,7 +319,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function deleteOneOffPayment(string $agreementRequestId, string $oneOffPaymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->delete('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $oneOffPaymentRequestId, $correlationId);
@@ -335,7 +336,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function captureOneOffPayment(string $agreementRequestId, string $paymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/' . $agreementRequestId . '/oneoffpayments/' . $paymentRequestId . '/capture', $correlationId);
@@ -351,7 +352,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getMerchantConfiguration(string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me', $correlationId);
@@ -367,7 +368,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function patchMerchantConfiguration(UpdateMerchantRequest $updateMerchantRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->patch('/subscriptions/api/merchants/me', $updateMerchantRequest, $correlationId);
@@ -383,7 +384,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function putAPIKeyAuthentication(ApiKeyAuthenticationRequest $apiKeyAuthenticationRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/apikey', $apiKeyAuthenticationRequest, $correlationId);
@@ -399,7 +400,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function putOAuth2Authentication(OAuth2AuthenticationRequest $oAuth2AuthenticationRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/oauth2', $oAuth2AuthenticationRequest, $correlationId);
@@ -415,7 +416,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function putBasicAuthentication(BasicAuthenticationRequest $basicAuthenticationRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->put('/subscriptions/api/merchants/me/auth/basic', $basicAuthenticationRequest, $correlationId);
@@ -437,7 +438,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function getRefunds(string $agreementRequestId, string $paymentRequestId, string $correlationId = null) {
         return $this->mobilePayConnectionManager->get('/subscriptions/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds', $correlationId);
@@ -455,7 +456,7 @@ class MobilePaySubscriptionClient {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function postRefunds(string $agreementRequestId, string $paymentRequestId, CreateRefundRequest $createRefundRequest, string $correlationId = null) {
         return $this->mobilePayConnectionManager->post('/subscriptions/api/merchants/me/agreements/'.$agreementRequestId.'/payments/'.$paymentRequestId.'/refunds', $createRefundRequest, $correlationId);

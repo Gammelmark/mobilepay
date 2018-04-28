@@ -9,6 +9,7 @@
 namespace Luxplus\MobilePay\Connection;
 
 
+use Luxplus\MobilePay\Exceptions\HttpResponseException;
 use Luxplus\MobilePay\Exceptions\IdNotProvidedException;
 use Luxplus\MobilePay\Exceptions\BadRequestException;
 use Luxplus\MobilePay\Exceptions\CurlException;
@@ -45,7 +46,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function get(string $uri,  Request $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'GET', $correlationId);
@@ -62,7 +63,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function delete(string $uri, Request $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'DELETE', $correlationId);
@@ -79,7 +80,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function post(string $uri, $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'POST', $correlationId);
@@ -96,7 +97,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function patch(string $uri, Request $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'PATCH', $correlationId);
@@ -113,7 +114,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     public function put(string $uri,  Request $request = null, string $correlationId = null) {
         return $this->connect($uri, $request, 'PUT', $correlationId);
@@ -131,7 +132,7 @@ class MobilePayConnection {
      * @throws InternalServerErrorException
      * @throws NotFoundException
      * @throws PreconditionFailedException
-     * @throws \HttpResponseException
+     * @throws HttpResponseException
      */
     private function connect(string $uri, $request = null, string $requestType, string $correlationId = null) {
         if(!is_resource($this->ch))
@@ -222,7 +223,7 @@ class MobilePayConnection {
 
             //All other codes are not accepted.
             default:
-                throw new \HttpResponseException("Response HTTP code not accepted. HTTP code: ".$responseInformation["http_code"].". Please consult the documentation.");
+                throw new HttpResponseException("Response HTTP code not accepted. HTTP code: ".$responseInformation["http_code"].". Please consult the documentation.");
                 break;
         }
         return $response;

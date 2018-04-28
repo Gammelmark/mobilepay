@@ -39,3 +39,5 @@
     
 - **23rd April 2018**    
     - Fixed issue in ErrorResponse and added a getFullResponse() method for logging purposes. 
+- **28rd April 2018**
+    - Fixed HttpResponseException bug.
