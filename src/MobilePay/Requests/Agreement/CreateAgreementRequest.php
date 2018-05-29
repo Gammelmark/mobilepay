@@ -135,7 +135,7 @@ class CreateAgreementRequest extends Request {
             $nextPaymentDate,
             12,
             $externalId,
-            5,
+            20160, //min: 5 minutes, max: 20160 minutes (2 weeks)
             $mobilePhoneNumber,
             $linkUserRedirect,
             $linkSuccessCallback,

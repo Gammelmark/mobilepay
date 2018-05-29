@@ -39,5 +39,8 @@
     
 - **23rd April 2018**    
     - Fixed issue in ErrorResponse and added a getFullResponse() method for logging purposes. 
-- **28rd April 2018**
+- **28th April 2018**
     - Fixed HttpResponseException bug.
+- **29th May 2018**
+    - The createSimpleInstance-method now instantiates with expirationTimeoutMinutes of 2 weeks instead of 5 minutes.
+    - Removed unused dependencies.
