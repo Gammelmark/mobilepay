@@ -10,7 +10,7 @@ namespace Luxplus\MobilePay\Connection;
 
 class MobilePayConnectionManager {
 
-    private static $instance = null;
+    private static $instance = [];
 
 
     /**
@@ -21,8 +21,8 @@ class MobilePayConnectionManager {
     public static function getInstance(MobilePayConnectionConfiguration $mobilePayConfiguration, string $instance = null) {
         if(is_null($instance))
             $instance = 'default';
-        
-        if(self::$instance[$instance] == null) {
+
+        if(!isset(self::$instance[$instance])) {
             self::$instance[$instance] = new MobilePayConnection($mobilePayConfiguration);
         }
 
