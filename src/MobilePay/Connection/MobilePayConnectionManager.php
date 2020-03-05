@@ -19,6 +19,9 @@ class MobilePayConnectionManager {
      * @return MobilePayConnection
      */
     public static function getInstance(MobilePayConnectionConfiguration $mobilePayConfiguration, string $instance = null) {
+        if(is_null($instance))
+            $instance = 'default';
+        
         if(self::$instance[$instance] == null) {
             self::$instance[$instance] = new MobilePayConnection($mobilePayConfiguration);
         }
